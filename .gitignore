@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Production Builds
+dist/
+dist-ssr/
+admin/dist/
+blog/.next/
+blog/out/
+blog/build/
+
+# Environment Variables (Chỉ commit .env.example)
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.local
+
+# Uploads & User Media (giữ lại thư mục uploads bằng .gitkeep)
+uploads/*
+!uploads/.gitkeep
+
+# Scratch, Cache & Logs
+scratch/
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Editor & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
