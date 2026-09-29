@@ -18,6 +18,8 @@ const Login = () => {
   useEffect(() => {
     if (location.state?.error) {
       toast.error(location.state.error);
+      // Xóa state để không bị toast lặp lại
+      window.history.replaceState({}, document.title);
     }
   }, [location.state]);
 
@@ -39,6 +41,15 @@ const Login = () => {
       toast.success('Đăng nhập thành công! Chào mừng bạn quay trở lại.');
       navigate('/');
     } catch (err) {
+      if (err.isForbidden) {
+        toast.error(err.message);
+        setError('email', {
+          type: 'manual',
+          message: err.message,
+        });
+        return;
+      }
+
       const serverMessage = err.response?.data?.message || '';
 
       if (
